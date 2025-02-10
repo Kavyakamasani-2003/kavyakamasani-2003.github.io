@@ -5,6 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Allow this workflow to deploy to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -24,14 +25,13 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-          retention-days: 1
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
