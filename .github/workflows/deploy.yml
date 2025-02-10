@@ -11,42 +11,23 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: List repository contents
-        run: |
-          pwd
-          ls -la
-
-      - name: Verify file structure
-        run: |
-          echo "Checking for index.html"
-          find . -name "index.html"
-
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-          retention-days: 1
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
-      - name: Debug Deployment
-        run: |
-          echo "Deployment URL: ${{ steps.deployment.outputs.page_url }}"
