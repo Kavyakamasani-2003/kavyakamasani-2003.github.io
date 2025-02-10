@@ -1,10 +1,15 @@
-[build]
-  command = "echo 'No build step needed'"
+﻿[build]
   publish = "."
+  command = "echo 'No build step needed'"
 
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
