@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://kavyakamasani.com/sitemap.xml
+
+# Performance and Crawl Optimization
+Crawl-delay: 10
