@@ -513,13 +513,50 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: 0.75rem;
 }
 
 .tech-tags span {
-    background-color: var(--background-color);
-    padding: 5px 10px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+    color: #28a745 !important; /* Force green text */
+    border: 1px solid rgba(40, 167, 69, 0.3); /* Green border */
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
     font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tech-tags span:hover {
+    background-color: rgba(40, 167, 69, 0.2);
+    transform: scale(1.05);
+}
+
+.tech-tags span i {
+    margin-right: 0.3rem;
+    color: #28a745 !important; /* Force green icon */
+    opacity: 0.8;
+}
+
+/* Dark Mode Compatibility */
+@media (prefers-color-scheme: dark) {
+    .tech-tags span {
+        background-color: rgba(40, 167, 69, 0.2) !important;
+        color: #5cff87 !important; /* Brighter green for dark mode */
+        border-color: rgba(40, 167, 69, 0.4) !important;
+    }
+
+    .tech-tags span i {
+        color: #5cff87 !important;
+        opacity: 1;
+    }
+
+    .tech-tags span:hover {
+        background-color: rgba(40, 167, 69, 0.3) !important;
+    }
 }
 
 .project-links {
@@ -764,6 +801,7 @@ footer {
     color: var(--text-primary);
     text-decoration: none;
     border-radius: 5px;
+    font-size: 0.8rem;
     transition: background-color 0.3s ease;
 }
 
@@ -947,12 +985,29 @@ footer {
     max-width: 600px;
 }
 
+.hero-text h1 {
+    margin-bottom: 1rem; /* Space after name */
+}
+
+.hero-text p {
+    margin-bottom: 0.75rem; /* Space between paragraphs */
+}
+
+.hero-text p:first-of-type {
+    margin-bottom: 1rem; /* Extra space for first paragraph */
+}
+
+.hero-cta {
+    margin-top: 1.5rem; /* Space before CTA buttons */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
+        padding: 1rem;
     }
 
     .hero-content img {
@@ -1691,5 +1746,283 @@ html {
 @media (max-width: 375px) {
     html {
         font-size: 12px;
+    }
+}
+
+/* Certification Sliding Animation */
+@keyframes certificationSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.certification-section .certification-card {
+    opacity: 0;
+    animation: certificationSlideIn 0.8s ease-out forwards;
+    animation-delay: calc(var(--delay) * 0.2s);
+}
+
+/* Staggered Animation Delays */
+.certification-section .certification-card:nth-child(1) {
+    --delay: 1;
+}
+.certification-section .certification-card:nth-child(2) {
+    --delay: 2;
+}
+.certification-section .certification-card:nth-child(3) {
+    --delay: 3;
+}
+.certification-section .certification-card:nth-child(4) {
+    --delay: 4;
+}
+.certification-section .certification-card:nth-child(5) {
+    --delay: 5;
+}
+.certification-section .certification-card:nth-child(6) {
+    --delay: 6;
+}
+
+/* Hover Effect */
+.certification-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Project Description Readability */
+.project-card .project-description {
+    color: #333; /* Dark gray for better contrast */
+    line-height: 1.6; /* Improved readability */
+    font-weight: 400; /* Slightly bolder for clarity */
+    opacity: 0.9; /* Slight transparency for softer look */
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+    .project-card .project-description {
+        color: #e0e0e0; /* Lighter color for dark mode */
+        opacity: 0.85;
+    }
+}
+
+/* Ensure good contrast with background */
+.project-card {
+    background-color: #fff; /* Ensure white background */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Technology Tags */
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.project-technologies span {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Dark Mode Internship Skills Visibility */
+@media (prefers-color-scheme: dark) {
+    .internship-skills {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .internship-skills span {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #e0e0e0; /* Lighter text for better readability */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .internship-skills span i {
+        color: #4db8ff; /* Brighter icon color */
+        opacity: 0.8;
+    }
+}
+
+/* Consistent Skill Tag Styling */
+.internship-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    transition: background-color 0.3s ease;
+}
+
+.internship-skills span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+    color: #28a745; /* Green text */
+    border: 1px solid rgba(40, 167, 69, 0.3); /* Green border */
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.internship-skills span:hover {
+    background-color: rgba(40, 167, 69, 0.2);
+    transform: scale(1.05);
+}
+
+.internship-skills span i {
+    margin-right: 0.3rem;
+    color: #28a745; /* Green icon */
+    opacity: 0.8;
+}
+
+/* Dark Mode Compatibility */
+@media (prefers-color-scheme: dark) {
+    .internship-skills span {
+        background-color: rgba(40, 167, 69, 0.2);
+        color: #5cff87; /* Brighter green for dark mode */
+        border-color: rgba(40, 167, 69, 0.4);
+    }
+
+    .internship-skills span i {
+        color: #5cff87;
+        opacity: 1;
+    }
+
+    .internship-skills span:hover {
+        background-color: rgba(40, 167, 69, 0.3);
+    }
+}
+
+/* Green Button and Link Styling */
+.internship-links .btn-small,
+.btn-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: rgba(40, 167, 69, 0.1) !important; /* Light green background */
+    color: #28a745 !important; /* Green text */
+    border: 1px solid rgba(40, 167, 69, 0.3) !important; /* Green border */
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.internship-links .btn-small:hover,
+.btn-small:hover {
+    background-color: rgba(40, 167, 69, 0.2) !important;
+    transform: scale(1.05);
+    color: #28a745 !important;
+}
+
+.internship-links .btn-small i,
+.btn-small i {
+    margin-right: 0.3rem;
+    color: #28a745 !important;
+    opacity: 0.8;
+}
+
+/* Dark Mode Compatibility */
+@media (prefers-color-scheme: dark) {
+    .internship-links .btn-small,
+    .btn-small {
+        background-color: rgba(40, 167, 69, 0.2) !important;
+        color: #5cff87 !important; /* Brighter green for dark mode */
+        border-color: rgba(40, 167, 69, 0.4) !important;
+    }
+
+    .internship-links .btn-small:hover,
+    .btn-small:hover {
+        background-color: rgba(40, 167, 69, 0.3) !important;
+        color: #5cff87 !important;
+    }
+
+    .internship-links .btn-small i,
+    .btn-small i {
+        color: #5cff87 !important;
+        opacity: 1;
+    }
+}
+
+/* Project Skills and Links Styling */
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem; /* Added space before project links */
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem; /* Space between View Details and GitHub buttons */
+}
+
+.project-links .btn-small,
+.project-tech-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: rgba(40, 167, 69, 0.1) !important; /* Light green background */
+    color: #28a745 !important; /* Green text */
+    border: 1px solid rgba(40, 167, 69, 0.3) !important; /* Green border */
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.project-links .btn-small:hover,
+.project-tech-tags span:hover {
+    background-color: rgba(40, 167, 69, 0.2) !important;
+    transform: scale(1.05);
+    color: #28a745 !important;
+}
+
+.project-links .btn-small i,
+.project-tech-tags span i {
+    margin-right: 0.3rem;
+    color: #28a745 !important;
+    opacity: 0.8;
+}
+
+/* Dark Mode Compatibility */
+@media (prefers-color-scheme: dark) {
+    .project-links .btn-small,
+    .project-tech-tags span {
+        background-color: rgba(40, 167, 69, 0.2) !important;
+        color: #5cff87 !important; /* Brighter green for dark mode */
+        border-color: rgba(40, 167, 69, 0.4) !important;
+    }
+
+    .project-links .btn-small:hover,
+    .project-tech-tags span:hover {
+        background-color: rgba(40, 167, 69, 0.3) !important;
+        color: #5cff87 !important;
+    }
+
+    .project-links .btn-small i,
+    .project-tech-tags span i {
+        color: #5cff87 !important;
+        opacity: 1;
     }
 }
